@@ -14,7 +14,7 @@ imgs <- list.files(pattern = "(jpg|png)$"
   keep(~grepl(folder, .)) %>% 
   discard(~grepl("docs", .)) %>%
   enframe(name = "num", value = "path") %>% 
-  mutate(url = file.path("https://github.com/Flavjack/pheno-maiz", path))
+  mutate(url = file.path("https://flavjack.github.io/pheno-maiz/", path))
 
 imgs %>% 
   select(url) %>% 
