@@ -1,0 +1,22 @@
+---
+title: "About"
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r}
+library(tidyverse)
+
+folder <- "library"
+
+imgs <- list.files(pattern = "(jpg|png)$"
+                   , recursive = T) %>% 
+  keep(~grepl(folder, .)) %>% 
+  discard(~grepl("docs", .)) %>%
+  enframe(name = "num", value = "path") %>% 
+  mutate(url = file.path("https://github.com/Flavjack/pheno-maiz", path))
+
+imgs %>% 
+  select(url) %>% 
+  write_csv("images4labelstudio.txt", col_names = F)
+```
